@@ -1,0 +1,18 @@
+
+.form-block {
+  display: inline-block;
+  padding: 0 16px 16px 0;
+}
+
+.form-block label {
+  display: inline-block;
+  justify-content: flex-end;
+  text-align: right;
+  vertical-align: top;
+  padding-right: 12px;
+}
+
+.form-block div {
+  display: inline-block;
+}
+

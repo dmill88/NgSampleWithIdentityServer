@@ -1,0 +1,9 @@
+<div>
+  <error-list [errors]="errors"></error-list>
+  <p-pickList [source]="availableTags" [target]="tags" sourceHeader="Available" targetHeader="Selected Tags"
+              dragdrop="true" [showSourceControls]="false" [showTargetControls]="false">
+    <ng-template let-tag pTemplate="item">
+      <div>{{tag}}</div>
+    </ng-template>
+  </p-pickList>
+</div>

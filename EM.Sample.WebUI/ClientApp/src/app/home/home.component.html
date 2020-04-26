@@ -1,0 +1,11 @@
+<h1>Sample Blogs</h1>
+
+<error-list [errors]="errors"></error-list>
+
+<div class="text-info" *ngIf="!publishedBlogs">
+  Loading
+</div>
+
+<div *ngFor="let blog of publishedBlogs">
+  <div><a [routerLink]="['/blogView', blog.id]">{{ blog.displayName }}</a></div>
+</div>

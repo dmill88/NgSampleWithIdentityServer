@@ -1,0 +1,99 @@
+<h1>{{ title }}</h1>
+
+<div class="loading" *ngIf="!isLoaded">
+  <div>Blog Post is Loading &#8230;</div>
+</div>
+
+<!--<h3>Preview of Post Content</h3>
+<div [innerHtml]="blogPost?.postContent">
+</div>-->
+
+<!--<div style="background-color: aliceblue; margin: 12px;">
+  {{ blogPost | json }}
+</div>-->
+
+<form [formGroup]="blogPostForm" novalidate *ngIf="isLoaded && blogPost" (ngSubmit)="saveBlogPost()">
+  <input type="hidden" formControlName="id" name="id" />
+  <input type="hidden" formControlName="guid" name="guid" />
+  <input type="hidden" formControlName="blogId" name="blogId" />
+
+  <div class="form-group">
+    <div *ngIf="successSaveMessage" class="text-success" style="margin-bottom: 12px;"><label>{{ successSaveMessage }}</label></div>
+    <error-list [errors]="formValidationErrors"></error-list>
+  </div>
+
+  <div class="form-group">
+    <label for="frmPrimaryAuthorId" class="control-label required">Author</label>
+    <div>
+      <p-dropdown [options]="authors" [placeholder]="'Select Author'" formControlName="primaryAuthorId" id="'frmPrimaryAuthorId'"></p-dropdown>
+      <control-validation-message [control]="blogPostForm.controls.primaryAuthorId" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="frmTitle" class="control-label required">Title</label>
+    <div>
+      <input pInputText formControlName="title" id="frmTitle" class="form-control required" />
+      <control-validation-message [control]="blogPostForm.controls.title" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label id="frmExcerpt" class="control-label required">Excerpt</label>
+    <div>
+      <textarea pInputTextarea [rows]="3" formControlName="excerpt" id="frmExcerpt" class="form-control"></textarea>
+      <control-validation-message [control]="blogPostForm.controls.excerpt" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <!--[formats]="['bold', 'italic', 'underline', 'strike', 'superscript', 'subscript']"-->
+
+  <div class="form-group">
+    <!--<div>
+      <p-editor [style]="{'height':'320px'}">
+        <p-header>
+          <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+          </span>
+        </p-header>
+      </p-editor>
+    </div>-->
+    <label class="control-label required">Post</label>
+    <div>
+      <p-editor formControlName="postContent" [style]="{'height':'388px'}"
+                formats="['bold', 'italic', 'size', 'strike', 'script', 'underline', 'header', 'indent', 'list', 'align', 'direction', 'code-block']">
+      </p-editor>
+      <control-validation-message [control]="blogPostForm.controls.postContent" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="frmpostStatusId" class="control-label required">Post Status</label>
+    <div>
+      <p-dropdown [options]="postStatuses" formControlName="postStatusId" id="frmpostStatusId"></p-dropdown>
+      <control-validation-message [control]="blogPostForm.controls.postStatusId" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label required">Comment Status</label>
+    <div>
+      <p-dropdown [options]="commentStatuses" formControlName="commentStatusId"></p-dropdown>
+      <control-validation-message [control]="blogPostForm.controls.commentStatusId" [show]="savedClicked"></control-validation-message>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Tags</label>
+    <tag-editor [(tags)]="postTags" [availableTags]="availableTags"></tag-editor>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" pButton label="Save" icon="pi pi-check" iconPos="left" [disabled]="!isLoaded || saving"></button>
+    <span class="frm-btn-spacer"></span>
+    <a [routerLink]="['/']"><span class=""></span>Cancel</a>
+  </div>
+</form>
+

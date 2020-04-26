@@ -1,0 +1,18 @@
+<h1>{{ title }}</h1>
+
+<error-list [errors]="errors"></error-list>
+
+<h4 *ngIf="blogPost && blogPost.primaryAuthor">
+  {{ blogPost.primaryAuthor.displayName }}
+</h4>
+
+<p *ngIf="blogPost && blogPost.excerpt" class="lead">
+  {{ blogPost.excerpt }}
+</p>
+
+<div *ngIf="blogPost && blogPost.postContent" [innerHTML]="blogPost.postContent" class="pt-2">
+</div>
+
+<div *ngIf="blogPost && blogPost.blogId" class="pt-3">
+  <a [routerLink]="['/blogView', blogPost.blogId]">Return to Blog Home</a>
+</div>

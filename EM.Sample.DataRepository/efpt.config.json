@@ -1,0 +1,118 @@
+﻿{
+   "ContextClassName": "ContentleverageContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Context",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "EM.Sample.DataRepository",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Author]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AuthorMetaData]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Blog]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BlogCategory]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BlogPost]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BlogStatus]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BlogTag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Category]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[CommentStatus]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Image]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[LoginProvider]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MetaKey]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MimeType]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Post]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostAuthor]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostCategory]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostComment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostHistory]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostStatus]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PostTag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Tag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[TagGroup]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[TagGroupMember]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ValueType]"
+      }
+   ],
+   "UseDatabaseNames": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

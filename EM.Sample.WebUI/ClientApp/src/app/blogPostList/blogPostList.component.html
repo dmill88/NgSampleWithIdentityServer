@@ -1,0 +1,47 @@
+<h2>Blog Posts</h2>
+
+<error-list [errors]="errors"></error-list>
+
+<p-table #tblBlogPosts [value]="blogPosts" dataKey="id" [paginator]="true" [rows]="20" [globalFilterFields]="['title']" [loading]="loading">
+  <ng-template pTemplate="summary" let-rowData>
+  </ng-template>
+  <ng-template pTemplate="caption">
+    <div style="text-align:left">
+      <button type="button" pButton icon="pi pi-plus" (click)="routeToAddBlogPost()" label="Add" title="Create New Posts"></button>
+      <span class="frm-btn-spacer"></span>
+      <label class="label label-default" for="ddlBlogStatus">
+        Status:
+      </label>
+      <p-dropdown [options]="postStatuses" [(ngModel)]="postStatusId" (onChange)="tblBlogPosts.filterGlobal($event.value, 'contains')" id="ddlPostStatus"></p-dropdown>
+
+      <label style="margin-left: 28px;">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tblBlogPosts.filterGlobal($event.target.value, 'contains')" style="width:auto">
+      </label>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 120px;"></th>
+      <th style="width: 80px;" [pSortableColumn]="'id'">ID <p-sortIcon [field]="'id'"></p-sortIcon></th>
+      <th [pSortableColumn]="'title'">Title <p-sortIcon [field]="'title'"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-post>
+    <tr>
+      <td><button type="button" pButton icon="pi pi-pencil" (click)="routeToEditBlogPost(post.id)" label="Edit"></button></td>
+      <td>{{post.id}}</td>
+      <td>{{post.title}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td [attr.colspan]="4">
+        No records found
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    Number of posts: {{blogPosts?.length}}
+  </ng-template>
+</p-table>

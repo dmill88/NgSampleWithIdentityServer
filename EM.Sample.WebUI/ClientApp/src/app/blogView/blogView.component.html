@@ -1,0 +1,16 @@
+<h1>{{ title }}</h1>
+
+<error-list [errors]="errors"></error-list>
+
+<h4 *ngIf="blog && blog.primaryAuthor">
+  {{ blog.primaryAuthor.displayName }}
+</h4>
+
+<p *ngIf="blog && blog.description" class="lead">
+  {{ blog.description }}
+</p>
+
+<h4>Posts</h4>
+<div *ngFor="let post of posts" class="pt-1">
+  <a [routerLink]="['/blogPostView', post.id]">{{ post.title }}</a>
+</div>

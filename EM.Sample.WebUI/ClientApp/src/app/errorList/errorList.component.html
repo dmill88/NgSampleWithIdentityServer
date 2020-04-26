@@ -1,0 +1,4 @@
+<div *ngIf="errors && errors.length" class="text-danger validation-summary-errors">
+  <label *ngIf="showErrorTitle">{{errorTitle}}</label>
+  <ul><li *ngFor="let error of errors">{{error}}</li></ul>
+</div>
