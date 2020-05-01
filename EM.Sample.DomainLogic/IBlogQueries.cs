@@ -11,7 +11,7 @@ namespace EM.Sample.DomainLogic
         Task<IEnumerable<BlogListItemDto>> FindBlogs(string name, BlogStatuses? blogStatus = null);
         BlogDto GetBlog(int id);
         BlogDto GetBlog(string name);
-        BlogPostDto GetBlogPost(int id);
+        Task<BlogPostDto> GetBlogPost(int id);
         Task<IEnumerable<PostListItemDto>> GetAllBlogPostsAsync(int blogId);
         IEnumerable<BlogPostDto> GetBlogPostsAsync(out int totalRecords, BlogPostsFilter filter);
         Task<IEnumerable<BlogListItemDto>> GetBlogs(BlogStatuses blogStatus = BlogStatuses.Published, int? primaryAuthorId = null);

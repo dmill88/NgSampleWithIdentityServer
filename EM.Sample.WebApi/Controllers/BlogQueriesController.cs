@@ -105,9 +105,9 @@ namespace EM.Sample.WebApi.Controllers
         }
 
         [HttpGet("[action]/{id}")]
-        public IActionResult GetBlogPost(int id)
+        public async Task<IActionResult> GetBlogPost(int id)
         {
-            PostDto blogPost = _blogQueries.GetBlogPost(id);
+            PostDto blogPost = await _blogQueries.GetBlogPost(id);
             return Ok(blogPost);
         }
 

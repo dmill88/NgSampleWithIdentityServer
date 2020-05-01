@@ -28,6 +28,7 @@ namespace EM.Sample.DomainLogic
                 Blog blogEntity = null;
                 blogEntity = Context.Blog
                     .Include(i => i.PrimaryAuthor)
+                    .Include(i => i.BlogStatus)
                     .Include(i => i.BlogTag).ThenInclude(i => i.Tag) // Intellisense doesn't work correctly for ThenInclude, but it works
                     .SingleOrDefault(i => i.Id == id);
                 //blog = blogEntity.Adapt<BlogDto>();
@@ -65,7 +66,6 @@ namespace EM.Sample.DomainLogic
                 return null;
             }
             BlogDto blogDto = entity.Adapt<BlogDto>();
-            blogDto.PrimaryAuthor = entity.PrimaryAuthor.Adapt<AuthorDto>();
             blogDto.Tags.AddRange(entity.BlogTag.Select(i => i.Tag.Name));
             return blogDto;
         }
@@ -270,13 +270,13 @@ namespace EM.Sample.DomainLogic
             return post;
         }
 
-        public BlogPostDto GetBlogPost(int id)
+        public async Task<BlogPostDto> GetBlogPost(int id)
         {
-            var entity = Context.BlogPost
+            var entity = await Context.BlogPost
                 .Include(i => i.Blog)
                 .Include(i => i.Post).ThenInclude(i => i.PostTag).ThenInclude(i => i.Tag)
                 .Include(i => i.Post).ThenInclude(i => i.PostAuthor)
-                .Where(i => i.PostId == id).FirstOrDefault();
+                .Where(i => i.PostId == id).FirstOrDefaultAsync();
 
             if (entity == null)
             {

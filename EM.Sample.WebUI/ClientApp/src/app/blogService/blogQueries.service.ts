@@ -83,10 +83,6 @@ export class BlogQueriesService {
     return this._http.get<BlogPost>(`${this._baseUrl}api/BlogQueries/GetBlogPost/${id}`);
   }
 
-  public getNewBlogPost(blogId: number): Observable<BlogPost> {
-    return this._http.get<BlogPost>(`${this._baseUrl}api/BlogPosts/AddBlogPost/${blogId}`);
-  }
-
   public getAllBlogPosts(blogId: number): Observable<Post[]> {
     let params = new HttpParams();
     params = params.append('blogId', blogId.toString());

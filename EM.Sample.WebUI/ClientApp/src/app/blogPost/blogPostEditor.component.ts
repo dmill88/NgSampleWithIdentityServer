@@ -90,7 +90,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
   }
 
   public getNewBlogPostModel(blogId: number): void {
-    this._blogQueriesService.getNewBlogPost(blogId).subscribe(blogPost => {
+    this._blogManager.getNewBlogPost(blogId).subscribe(blogPost => {
       this.blogPost = blogPost;
       this.loadAuthorList();
       this.postStatuses = this._blogQueriesService.getPostStatuses();
