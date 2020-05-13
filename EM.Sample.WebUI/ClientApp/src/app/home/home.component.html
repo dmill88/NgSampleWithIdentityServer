@@ -6,6 +6,8 @@
   Loading
 </div>
 
-<div *ngFor="let blog of publishedBlogs">
-  <div><a [routerLink]="['/blogView', blog.id]">{{ blog.displayName }}</a></div>
+<div class="blog-list">
+  <div *ngFor="let blog of publishedBlogs">
+    <a [routerLink]="['/blogView', blog.id]">{{ blog.displayName }}</a>
+  </div>
 </div>

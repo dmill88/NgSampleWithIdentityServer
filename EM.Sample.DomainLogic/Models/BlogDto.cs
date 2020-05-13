@@ -19,7 +19,7 @@ namespace EM.Sample.DomainLogic.Models
 
         public Guid GUID { get; set; }
         
-        [MaxLength(350), Display(Name = "Name")]
+        [MaxLength(350), Display(Name = "Name"), Required]
         public string Name { get; set; }
         
         public int PrimaryAuthorId { get; set; }
@@ -30,10 +30,10 @@ namespace EM.Sample.DomainLogic.Models
 
         public BlogStatusDto BlogStatus { get; set; }
 
-        [MaxLength(350), Display(Name = "Display Name")]
+        [MaxLength(350), Display(Name = "Display Name"), Required]
         public string DisplayName { get; set; }
 
-        [Display(Name = "Display Order")]
+        [Display(Name = "Display Order"), Range(0, 10000)]
         public int DisplayOrder { get; set; }
 
         public string Description { get; set; }

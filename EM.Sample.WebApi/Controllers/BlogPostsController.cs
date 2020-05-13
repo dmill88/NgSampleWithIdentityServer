@@ -39,6 +39,8 @@ namespace EM.Sample.WebApi.Controllers
             BlogDto blog = _blogQueries.GetBlog(blogId);
             blogPost.BlogId = blogId;
             blogPost.BlogDisplayName = blog.DisplayName;
+            blogPost.PostStatusId = (int)PostStatuses.Draft;
+            blogPost.CommentStatusId = (int)CommentStatuses.MemberOnly;
             return Ok(blogPost);
         }
 

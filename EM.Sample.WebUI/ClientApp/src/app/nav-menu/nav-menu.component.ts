@@ -26,7 +26,6 @@ export class NavMenuComponent {
       }
     });
     if (this._authService.authContext) {
-      console.log('ssssssssssssssssssss');
       this.updateLoginStatus();
     }
   }

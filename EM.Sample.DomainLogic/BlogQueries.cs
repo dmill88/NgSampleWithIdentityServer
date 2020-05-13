@@ -31,9 +31,6 @@ namespace EM.Sample.DomainLogic
                     .Include(i => i.BlogStatus)
                     .Include(i => i.BlogTag).ThenInclude(i => i.Tag) // Intellisense doesn't work correctly for ThenInclude, but it works
                     .SingleOrDefault(i => i.Id == id);
-                //blog = blogEntity.Adapt<BlogDto>();
-                //blog.PrimaryAuthor = blogEntity.PrimaryAuthor.Adapt<AuthorDto>();
-                //blog.Tags.AddRange(blogEntity.BlogTag.Select(i => i.Tag.Name));
                 blog = ConvertBlogEntityToDto(blogEntity);
             }
             else

@@ -36,7 +36,6 @@ import { SignoutRedirectCallbackComponent } from './home/signout-redirect-callba
 import { BlogViewComponent } from './blogView/blogView.component';
 import { BlogPostViewComponent } from './blogPostView/blogPostView.component';
 import { RoleRouteGuard } from './shared/role-route-gaurd';
-import { AuthService } from './shared/auth-service.component';
 import { Constants } from './constants';
 
 @NgModule({
