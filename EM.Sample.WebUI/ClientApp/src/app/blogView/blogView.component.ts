@@ -27,7 +27,7 @@ export class BlogViewComponent implements OnInit, OnDestroy {
     console.log('BlogViewComponent.ngOnInit()');
 
     this._route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       if (id != null) {
         this.loadBlog(id);
       }
@@ -48,7 +48,7 @@ export class BlogViewComponent implements OnInit, OnDestroy {
       this.title = blog.displayName;
 
       this._blogQueriesService.getBlogPosts(id).subscribe(pagedResult => {
-        this.posts = <Post[]>pagedResult.data;
+        this.posts = pagedResult.data as Post[];
       }, error => {
           this.errors = ControlValidationService.parseWebApiErrors(error);
       });

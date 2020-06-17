@@ -48,8 +48,8 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
     console.log('BlogEditorComponent.ngOnInit()');
 
     this._route.params.subscribe(params => {
-      let id = +params['id'];
-      let blogId = +params['blogId'];
+      const id = +params['id'];
+      const blogId = +params['blogId'];
       if (id != null && id > 0) {
         this.title = 'Edit Blog Post';
         this.loadBlogPost(id);
@@ -190,7 +190,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
     console.log(`blogForm value: ${JSON.stringify(this.blogPostForm.value)}`);
     this.savedClicked = true;
     this.clearMessages();
-    let displayNameMap: Map<string, string> = new Map<string, string>([
+    const displayNameMap: Map<string, string> = new Map<string, string>([
       ["primaryAuthorId", "Primary Author"],
       ["displayOrder", "Display Order"],
       ["blogStatusId", "Blog Status"],
@@ -201,7 +201,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
     if (this.formValidationErrors.length === 0) {
       this.saving = true;
 
-      let post: Post = <Post>this.blogPostForm.value;
+      const post: Post = this.blogPostForm.value as Post;
       //for (let tag of this.postTags) {
       //  //post.tags.push(tag);
       //}

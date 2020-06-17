@@ -47,7 +47,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     console.log('BlogEditorComponent.ngOnInit()');
 
     this._route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       if (id != null) {
         this.title = id > 0 ? 'Edit Blog' : 'Add Blog';
         this.loadBlog(id);

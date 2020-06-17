@@ -17,7 +17,7 @@ export class BlogPostListComponent implements OnInit, OnDestroy {
   public blogPosts: Array<Post> = null;
   public errors: Array<string> = new Array<string>();
   public loading: boolean = false;
-  public postStatusId: number = <number>PostStatuses.Published;
+  public postStatusId: number = PostStatuses.Published as number;
   public postStatuses: SelectItem[];
   //public xxblogId: number;
 

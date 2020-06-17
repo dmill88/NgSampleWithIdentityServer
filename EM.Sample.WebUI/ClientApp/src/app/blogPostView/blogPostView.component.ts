@@ -26,8 +26,8 @@ export class BlogPostViewComponent implements OnInit, OnDestroy {
     console.log('BlogPostViewComponent.ngOnInit()');
 
     this._route.params.subscribe(params => {
-      let id = +params['id'];
-      if (id != null) {
+      const id = +params['id'];
+      if (id !== null) {
         this.loadPostBlog(id);
       }
     }, error => {
