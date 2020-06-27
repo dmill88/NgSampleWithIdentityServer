@@ -142,7 +142,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     console.log(`blogForm value: ${JSON.stringify(this.blogForm.value)}`);
     this.savedClicked = true;
     this.clearMessages();
-    let displayNameMap: Map<string, string> = new Map<string, string>([
+    const displayNameMap: Map<string, string> = new Map<string, string>([
       ["primaryAuthorId", "Primary Author"],
       ["displayOrder", "Display Order"],
       ["blogStatusId", "Blog Status"],

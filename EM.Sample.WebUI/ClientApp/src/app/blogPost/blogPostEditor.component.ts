@@ -61,7 +61,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
         //  debugger;
         //  // TODO: Add error message
         //}
-      } else if (blogId != null && blogId > 0) {
+      } else if (blogId !== null && blogId > 0) {
         this.getNewBlogPostModel(blogId);
       }
     }, error => {
@@ -174,7 +174,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
   }
 
   public get pageTitle(): string {
-    let title: string = 'Edit Blog';
+    let title = 'Edit Blog';
     if (this.blogPost && this.blogPost.title && this.isLoaded) {
       if (this.blogPost.id) {
         title = `Edit ${this.blogPost.title}`;

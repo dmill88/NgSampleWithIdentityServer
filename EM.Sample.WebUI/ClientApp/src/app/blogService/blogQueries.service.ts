@@ -1,20 +1,19 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { SelectItem, SelectItemGroup } from 'primeng/api';
+import { SelectItem } from 'primeng/api';
 
 import { Author, Blog, BlogPost, BlogListItem, BlogStatuses, CommentStatuses, Post, PostStatuses } from './../models/blog.models';
 import { ListItemNameId } from './../models/formControl.models';
 import { PagedResult } from './../models/pagedResult.model';
 import { WebApiHelper } from './../shared/webApiHelper';
-import { BlogListComponent } from '../blogList/blogList.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogQueriesService {
-  private _baseUrl: string = '/';
+  private _baseUrl = '/';
 
   constructor(
     private _http: HttpClient,
@@ -27,9 +26,9 @@ export class BlogQueriesService {
   public getAuthorsSelectList(): Observable<Array<SelectItem>> {
     return this._http.get(`${this._baseUrl}api/AuthorQueries/GetAuthors`)
       .pipe(map(response => {
-        let list = new Array<SelectItem>();
-        let listData: Author[] = <Author[]>response;
-        for (let item of listData) {
+        const list = new Array<SelectItem>();
+        const listData: Author[] = <Author[]>response;
+        for (const item of listData) {
           list.push({ label: `${item.firstName} ${item.lastName}`, value: item.id });
         }
         return list;
@@ -37,7 +36,7 @@ export class BlogQueriesService {
   }
 
   public getBlogStatusSelectList(): Array<SelectItem> {
-    let list = new Array<SelectItem>();
+    const list = new Array<SelectItem>();
     list.push({ label: 'Draft', value: <number>BlogStatuses.Draft });
     list.push({ label: 'Review', value: <number>BlogStatuses.Review });
     list.push({ label: 'Published', value: <number>BlogStatuses.Published });
@@ -46,7 +45,7 @@ export class BlogQueriesService {
   }
 
   public getPostStatuses(): Array<SelectItem> {
-    let list = new Array<SelectItem>();
+    const list = new Array<SelectItem>();
     list.push({ label: 'Draft', value: <number>PostStatuses.Draft });
     list.push({ label: 'Review', value: <number>PostStatuses.Review });
     list.push({ label: 'Published', value: <number>PostStatuses.Published });
@@ -55,7 +54,7 @@ export class BlogQueriesService {
   }
 
   public getCommentStatuses(): Array<SelectItem> {
-    let list = new Array<SelectItem>();
+    const list = new Array<SelectItem>();
     list.push({ label: 'Anonymous', value: <number>CommentStatuses.Anonymous });
     list.push({ label: 'Disabled', value: <number>CommentStatuses.Disabled });
     list.push({ label: 'Locked', value: <number>CommentStatuses.Locked });
@@ -65,9 +64,9 @@ export class BlogQueriesService {
 
   public getBlogs(status: BlogStatuses = BlogStatuses.Published, primaryAuthorId: number = null): Observable<Array<BlogListItem>> {
     console.log('BlogManagerService.getBlogs');
-    let url = `${this._baseUrl}api/BlogQueries/GetBlogs`;
+    const url = `${this._baseUrl}api/BlogQueries/GetBlogs`;
     let params = new HttpParams();
-    let statusId: number = <number>status;
+    const statusId: number = <number>status;
     params = params.append('status', statusId.toString());
     if (primaryAuthorId) {
       params = params.append('primaryAuthorId', primaryAuthorId.toString());
@@ -89,24 +88,24 @@ export class BlogQueriesService {
     return this._http.get<Post[]>(`${this._baseUrl}api/BlogQueries/GetAllBlogPosts`, { params });
   }
 
-  public getBlogPosts(blogId: number, skip: number = 0, take: number = 10): Observable<PagedResult> {
+  public getBlogPosts(blogId: number, skip = 0, take = 10): Observable<PagedResult> {
     console.log("getBlogPosts", blogId, skip, take);
-    let filter = { blogId: blogId, skip: skip, take: take };
+    const filter = { blogId: blogId, skip: skip, take: take };
     return this._http.post<PagedResult>(`${this._baseUrl}api/BlogQueries/GetBlogPosts`, filter);
   }
 
   public getTags(): Observable<SelectItem[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetTags`).pipe(map(response => {
-      let list = WebApiHelper.convertListItemNameIDToNgPrimeSelectItemArray(response);
+      const list = WebApiHelper.convertListItemNameIDToNgPrimeSelectItemArray(response);
       return list;
     }));
   }
 
   public getTagsWithNameValue(): Observable<SelectItem[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetTags`).pipe(map(response => {
-      let list = new Array<SelectItem>();
-      let listData: ListItemNameId[] = response;
-      for (let item of listData) {
+      const list = new Array<SelectItem>();
+      const listData: ListItemNameId[] = response;
+      for (const item of listData) {
         list.push({ label: item.name, value: item.name });
       }
       return list;
@@ -115,9 +114,9 @@ export class BlogQueriesService {
 
   public getBlogTags(id: number): Observable<string[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetBlogTags/${id}`).pipe(map(response => {
-      let list = new Array<string>();
-      let listData: ListItemNameId[] = response;
-      for (let item of listData) {
+      const list = new Array<string>();
+      const listData: ListItemNameId[] = response;
+      for (const item of listData) {
         list.push(item.name);
       }
       return list;
@@ -126,9 +125,9 @@ export class BlogQueriesService {
 
   public getUnusedBlogTags(id: number): Observable<string[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetUnusedBlogTags/${id}`).pipe(map(response => {
-      let list = new Array<string>();
-      let listData: ListItemNameId[] = response;
-      for (let item of listData) {
+      const list = new Array<string>();
+      const listData: ListItemNameId[] = response;
+      for (const item of listData) {
         list.push(item.name);
       }
       return list;
@@ -137,9 +136,9 @@ export class BlogQueriesService {
 
   public getPostTags(id: number): Observable<string[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetPostTags/${id}`).pipe(map(response => {
-      let list = new Array<string>();
-      let listData: ListItemNameId[] = response;
-      for (let item of listData) {
+      const list = new Array<string>();
+      const listData: ListItemNameId[] = response;
+      for (const item of listData) {
         list.push(item.name);
       }
       return list;
@@ -148,9 +147,9 @@ export class BlogQueriesService {
 
   public getUnusedPostTags(id: number): Observable<string[]> {
     return this._http.get<ListItemNameId[]>(`${this._baseUrl}api/BlogQueries/GetUnusedPostTags/${id}`).pipe(map(response => {
-      let list = new Array<string>();
-      let listData: ListItemNameId[] = response;
-      for (let item of listData) {
+      const list = new Array<string>();
+      const listData: ListItemNameId[] = response;
+      for (const item of listData) {
         list.push(item.name);
       }
       return list;

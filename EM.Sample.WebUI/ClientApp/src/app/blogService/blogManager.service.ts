@@ -1,13 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { catchError, retry, map, retryWhen } from 'rxjs/operators';
-import { SelectItem, SelectItemGroup } from 'primeng/api';
-
-import { Author, Blog, BlogPost, BlogListItem, BlogStatuses, CommentStatuses, Post, PostStatuses } from './../models/blog.models';
-import { ListItemNameId } from './../models/formControl.models';
-import { WebApiHelper } from './../shared/webApiHelper';
-import { BlogListComponent } from '../blogList/blogList.component';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Blog, BlogPost } from './../models/blog.models';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +18,8 @@ export class BlogManagerService {
   }
 
   public addBlog(blog: Blog, tags: string[]): Observable<Blog> {
-    let body = Object.assign({}, blog, { tags: tags });
+    //let body = Object.assign({}, blog, { tags: tags });
+    const body = { ...blog, tags: tags };
     return this._http.post<Blog>(`${this._baseUrl}api/Blog/AddBlog`, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
@@ -32,14 +27,13 @@ export class BlogManagerService {
     return this._http.get<BlogPost>(`${this._baseUrl}api/BlogPosts/AddBlogPost/${blogId}`);
   }
 
-  public addBlogPost(post: BlogPost): Observable<BlogPost> {
-    //let body = Object.assign({}, blogPost, { tags: tags });
-    return this._http.post<BlogPost>(`${this._baseUrl}api/BlogPosts/AddBlogPost`, post, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  public addBlogPost(blogPost: BlogPost): Observable<BlogPost> {
+    return this._http.post<BlogPost>(`${this._baseUrl}api/BlogPosts/AddBlogPost`, blogPost, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
     //return this._http.post<BlogPost>(`${this._baseUrl}api/BlogPosts/AddBlogPost`, post);
   }
 
   public updateBlog(blog: Blog, tags: string[]): Observable<Blog> {
-    let body = Object.assign({}, blog, { tags: tags });
+    const body = { ...blog, tags: tags };
     return this._http.put<Blog>(`${this._baseUrl}api/Blog/UpdateBlog`, body, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
 
