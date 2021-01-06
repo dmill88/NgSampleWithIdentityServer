@@ -90,7 +90,7 @@ namespace EM.Sample.DomainLogic
             catch (Exception exp)
             {
                 System.Diagnostics.Debug.WriteLine(exp.ToString());
-                throw exp;
+                throw;
             }
         }
 

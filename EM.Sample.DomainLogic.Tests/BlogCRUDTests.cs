@@ -169,8 +169,8 @@ namespace EM.Sample.DomainLogic.Tests
         [TestCleanup()]
         public void Cleanup()
         {
-            if (_blogCmds != null) _blogCmds.Dispose();
-            if (_blogRqs != null) _blogRqs.Dispose();
+            _blogCmds?.Dispose();
+            _blogRqs?.Dispose();
         }
 
     }

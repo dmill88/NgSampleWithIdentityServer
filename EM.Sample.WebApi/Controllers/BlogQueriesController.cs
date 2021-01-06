@@ -89,7 +89,7 @@ namespace EM.Sample.WebApi.Controllers
             return Ok(statuses);
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{blogId}")]
         public async Task<IActionResult> GetAllBlogPostsAsync([FromQuery] int blogId)
         {
             IEnumerable<PostListItemDto> posts = await _blogQueries.GetAllBlogPostsAsync(blogId);
