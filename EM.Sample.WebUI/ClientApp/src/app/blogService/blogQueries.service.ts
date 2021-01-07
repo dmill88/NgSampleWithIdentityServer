@@ -83,9 +83,7 @@ export class BlogQueriesService {
   }
 
   public getAllBlogPosts(blogId: number): Observable<Post[]> {
-    let params = new HttpParams();
-    params = params.append('blogId', blogId.toString());
-    return this._http.get<Post[]>(`${this._baseUrl}api/BlogQueries/GetAllBlogPosts`, { params });
+    return this._http.get<Post[]>(`${this._baseUrl}api/BlogQueries/GetAllBlogPosts/${blogId}`);
   }
 
   public getBlogPosts(blogId: number, skip = 0, take = 10): Observable<PagedResult> {

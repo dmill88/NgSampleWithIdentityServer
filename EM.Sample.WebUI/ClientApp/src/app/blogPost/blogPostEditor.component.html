@@ -90,10 +90,10 @@
     <tag-editor [(tags)]="postTags" [availableTags]="availableTags"></tag-editor>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" *ngIf="isLoaded && blogPost">
     <button type="submit" pButton label="Save" icon="pi pi-check" iconPos="left" [disabled]="!isLoaded || saving"></button>
     <span class="frm-btn-spacer"></span>
-    <a [routerLink]="['/']"><span class=""></span>Cancel</a>
+    <button (click)="routeToBlogAdmin()" type="button" pButton label="Cancel" icon="pi pi-times-circle" iconPos="left" [disabled]="!isLoaded || saving"></button>
   </div>
 </form>
 

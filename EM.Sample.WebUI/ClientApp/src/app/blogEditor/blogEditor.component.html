@@ -55,6 +55,8 @@
     <label for="frmDisplayOrder" class="col-form-label required">Display Order</label>
     <div>
       <p-spinner size="3" formControlName="displayOrder" id="frmDisplayOrder"></p-spinner>
+      <!--<input pInputText formControlName="displayOrder" id="frmDisplayOrder" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical"
+                     decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />-->
       <control-validation-message [control]="blogForm.controls.displayOrder" [show]="savedClicked"></control-validation-message>
     </div>
   </div>

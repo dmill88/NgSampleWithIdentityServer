@@ -79,18 +79,18 @@ import { Constants } from './constants';
     SharedModule,
 
     RouterModule.forRoot([
-      { path: 'blogView/:id', component: BlogViewComponent },
-      { path: 'blogPostView/:id', component: BlogPostViewComponent },
-      { path: 'blogList', component: BlogListComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
-      { path: 'blogEditor/:id', component: BlogEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
-      { path: 'addBlogPost/:blogId', component: BlogPostEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
-      { path: 'editBlogPost/:id', component: BlogPostEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'signin-callback', component: SigninRedirectCallbackComponent },
-      { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
-      { path: 'unauthorized', component: UnauthorizedComponent },
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-    ])
+    { path: 'blogView/:id', component: BlogViewComponent },
+    { path: 'blogPostView/:id', component: BlogPostViewComponent },
+    { path: 'blogList', component: BlogListComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
+    { path: 'blogEditor/:id', component: BlogEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
+    { path: 'addBlogPost/:blogId', component: BlogPostEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
+    { path: 'editBlogPost/:id', component: BlogPostEditorComponent, canActivate: [RoleRouteGuard], data: { role: Constants.userRoles.blogEditor } },
+    { path: 'fetch-data', component: FetchDataComponent },
+    { path: 'signin-callback', component: SigninRedirectCallbackComponent },
+    { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
+    { path: 'unauthorized', component: UnauthorizedComponent },
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]

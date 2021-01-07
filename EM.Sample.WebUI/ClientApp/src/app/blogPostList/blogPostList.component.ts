@@ -40,9 +40,9 @@ export class BlogPostListComponent implements OnInit, OnDestroy {
   public getBlogPosts(blogId: number): void {
     this.loading = true;
     // _blogQueriesService.getAllBlogPosts
-    this._blogQueries.getAllBlogPosts(blogId).subscribe(posts => {
+    this._blogQueries.getBlogPosts(blogId).subscribe(pagedResult => {
       this.loading = false;
-      this.blogPosts = posts;
+      this.blogPosts = pagedResult.data as Post[];
     }, error => {
       this.loading = false;
       debugger;

@@ -40,6 +40,7 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private _route: ActivatedRoute,
+    private _router: Router,
     private _blogManager: BlogManagerService,
     private _blogQueriesService: BlogQueriesService) {
   }
@@ -125,6 +126,10 @@ export class BlogPostEditorComponent implements OnInit, OnDestroy {
     }, () => {
       this.isLoaded = true;
     });
+  }
+
+  public routeToBlogAdmin() {
+    this._router.navigate(['blogEditor', this.blogPost.blogId]);
   }
 
   private loadAuthorList(): void {
