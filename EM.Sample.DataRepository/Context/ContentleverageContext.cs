@@ -20,7 +20,7 @@ namespace EM.Sample.DataRepository.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=ContentLeverage;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=ContentLeverage;Integrated Security=True");
             }
         }
 

@@ -206,6 +206,20 @@ namespace EM.Membership.Isp.Controllers.Account
         }
 
         [HttpGet]
+        public async Task<IActionResult> AddTestUser()
+        {
+            ApplicationUser user = await _userManager.FindByNameAsync("Testuser01@test.com");
+            if (user == null)
+            {
+                user = new ApplicationUser() { Email = "Testuser01@test.com", FirstName = "Mike", LastName = "Muller", UserName = "Testuser01@test.com" };
+                var idResult = await _userManager.CreateAsync(user, "MadMag@@01");
+                user = await _userManager.FindByNameAsync(user.UserName);
+                await _userManager.AddToRoleAsync(user, "Admin");
+            }
+            return View("AccessDenied");
+        }
+
+        [HttpGet]
         public IActionResult AccessDenied()
         {
             return View();

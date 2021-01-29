@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<h1>{{ pageTitle }}</h1>
 
 <div class="loading" *ngIf="!isLoaded">
   <div>Blog is Loading &#8230;</div>
@@ -15,17 +15,6 @@
   <input type="hidden" formControlName="guid" name="guid" />
 
   <error-list [errors]="formValidationErrors"></error-list>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Price in $</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    <div class="input-group-append">
-      <span class="input-group-text">.00</span>
-    </div>
-  </div>
-
 
   <div class="form-group">
     <label class="col-form-label required">Author</label>
